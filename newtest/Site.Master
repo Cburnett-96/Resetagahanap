@@ -1,0 +1,224 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="newtest.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %></title>
+
+    <%--fontawesome css--%>
+    <link href="fontawesome/css/all.css" rel="stylesheet" />
+    <%--our custom css--%>
+    <link href="css/litera.css" rel="stylesheet" />
+
+    <%--jquery--%>
+    <script src="bootstrap/js/jquery-3.3.1.slim.min.js"></script>
+    <%--popper js--%>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <%--bootstrap js--%>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <asp:PlaceHolder runat="server"></asp:PlaceHolder>
+</head>
+<body>
+    <form runat="server">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="../">
+                    <img src="imgs/logo.png" width="30" height="30" />
+                    ReseTagahanap
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <center>
+                         <asp:LinkButton class="nav-link" ID="Linkbtnhome" runat="server" href="Home Page.aspx" Visible="False">Menu</asp:LinkButton>
+                        <asp:LinkButton class="nav-link" ID="Linkbtnhomedoctor" runat="server" href="HomePageDoctor.aspx" Visible="False">Menu</asp:LinkButton>
+                        <asp:LinkButton class="nav-link" ID="Linkbtnhomepharmacy" runat="server" href="HomePagePharmacy.aspx" Visible="False">Menu</asp:LinkButton>
+                        <asp:LinkButton class="nav-link" ID="Linkbtnhomeadmin" runat="server" href="AdminHomePage.aspx" Visible="False">Menu</asp:LinkButton>
+                        </center>
+                        </li>
+                        <li class="nav-item">
+                            <center>
+                            <asp:LinkButton class="nav-link" data-toggle="modal" data-target="#exampleModalAbout" ID="LinkButton3" runat="server">About Us</asp:LinkButton>
+                        </center>
+                        </li>
+                        <li class="nav-item">
+                            <center>
+                            <asp:LinkButton class="nav-link" data-toggle="modal" data-target="#exampleModalMission" ID="LinkButton2" runat="server">Our Mission</asp:LinkButton>
+                        </center>
+                        </li>
+                        <li class="nav-item">
+                            <center>
+                            <asp:LinkButton class="nav-link" data-toggle="modal" data-target="#exampleModal1" ID="LinkButton1" runat="server">Contact Us</asp:LinkButton>
+                        </center>
+                        </li>
+                        <li class="nav-item">
+                            <center>
+                            <a class="nav-link" href="PharmacyList.aspx">Pharmacy List</a>
+                        </center>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <center>
+                        <li id="hide" class="nav-item dropdown" runat="server">
+                            <asp:Label ID="Label1" runat="server" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" Text=""></asp:Label>
+                            <div class="dropdown-menu">
+                                <asp:LinkButton class="dropdown-item" ID="Linkbtnprofile" runat="server" Visible="False" OnClick="Linkbtnprofile_Click">Profile<img class="float-sm-right" src="imgs/profile.png" width="20" height="20" /></asp:LinkButton>
+                                <asp:LinkButton class="dropdown-item" ID="Linkbtnprofiledoctor" runat="server" Visible="False" OnClick="Linkbtnprofiledoctor_Click">Profile<img class="float-sm-right" src="imgs/profile.png" width="20" height="20" /></asp:LinkButton>
+                                <asp:LinkButton class="dropdown-item" ID="Linkbtnprofilepharmacy" runat="server" Visible="False" OnClick="Linkbtnprofilepharmacy_Click">Profile<img class="float-sm-right" src="imgs/profile.png" width="20" height="20" /></asp:LinkButton>
+                                <div class="dropdown-divider"></div>
+                                <center>
+                                <asp:LinkButton class="btn btn-link text-danger" ID="Linkbtnlogout" runat="server" Visible="False" OnClick="Linkbtnlogout_Click">Logout</asp:LinkButton>
+                            </center>
+                                    </div>
+                        </li>
+                        </center>
+                        <center>
+                        <li id="LoginSignup" class="nav-item dropdown" runat="server">
+                            <asp:Label ID="Label3" runat="server" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login or Signup <span class="fa fa-user"></span></asp:Label>
+                            <div class="dropdown-menu">
+                                <center>
+                                <asp:LinkButton class="dropdown-item" ID="Linkpatient" runat="server" href="LoginSignup.aspx">Patient</asp:LinkButton>
+                            </center>
+                            </div>
+                        </li>
+                        </center>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+        <br />
+        <blockquote class="blockquote text-center">
+            <p class="mb-0">They say truth tastes bitter. But so do life saving medicines.</p>
+            <footer class="blockquote-footer">Akshar</footer>
+        </blockquote>
+        <br />
+        <footer>
+            <div class="row">
+                <div class="col">
+                    <p>&copy; <%: DateTime.Now.Year %> - ReseTagahanap</p>
+                </div>
+            </div>
+        </footer>
+        <!-- Modal Contact -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Contact Us</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <address>
+                            <strong>John Nicolas Email:</strong> <a href="mailto:johnnicolasvincent.petate@lspu.edu.ph">johnnicolasvincent.petate@lspu.edu.ph</a><br />
+                            <strong>Albert Email:</strong> <a href="mailto:albert.pasco@lspu.edu.ph">albert.pasco@lspu.edu.ph</a><br />
+                            <strong>Mark Dennis Email:</strong> <a href="mailto:markdennis.vergara@lspu.edu.ph">markdennis.vergara@lspu.edu.ph</a>
+                        </address>
+                        <p>
+                            Pangil, Laguna, Philippines 4018<br />
+                            +63936 027 6388
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Our Mission -->
+        <div class="modal fade" id="exampleModalMission" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Our Mission</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-primary">Main Objectives:</p>
+                        <p class="text-warning">
+                            To move the paper transcription into a digitalized means and provide an e-commerce space for small scale pharmaceutical stores in the area of scope. 
+                        </p>
+                        <p class="text-primary">Specific Objectives:</p>
+                        <p class="text-warning">1.  To digitalize paper prescriptions using portable document file that can be seen and stored in users account.</p>
+                        <p class="text-warning">2.  To store the key artifact (Prescription) of doctor-patient transaction in a centralized storage.</p>
+                        <p class="text-warning">3.  To help small scale pharmaceutical store in their sale improvements using an e-commerce platform.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal About Us -->
+        <div class="modal fade" id="exampleModalAbout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel2">ReseTagahanap:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card-body text-warning">
+                            <center>
+        <h5>
+            A Responsive Web Application for Medicine Prescription Digitalization and Drugstore Locator
+        </h5>
+        </center>
+                            <hr />
+                            <h6 class="text-primary">
+                                Software Development Team: <img src="imgs/leadership.png" height="25" width="25" />
+                            </h6>
+                            <p class="text-danger">John Nicolas Vincent A. Petate</p>
+                            <p class="text-danger">Albert Querido Pasco</p>
+                            <p class="text-danger">Mark Dennis P. Vergara</p>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 mx-auto">
+                                    <div class="card text-white bg-success mb-3">
+                                        <div class="card-body">
+                                            Today's people have more access to health information than ever before and as they get used to the advantages of technology, they start seeking the same benefits from their health services' personalization, power, and convenience.  
+                            <p>
+                                The medical prescription is a central artifact of a relationship between doctor and patient. According to a report filed by MISMOTODAY, there are 70,000 active physicians in the Philippines. By that number an estimated more than a million of paper prescriptions are written every year.
+                            </p>
+                                            <p>
+                                                Paper prescriptions can be easily shredded and can be dampened anytime. It can also be lost easily. This system that has been proposed by the Development Team aims to move paper prescription methodology in digital space. 
+                                            </p>
+                                            <p>
+                                                It is well known that physicians have scribbled handwritings. Typically, the writer understands what is written, but issues like errors arises when other people are involved on how the text being read and interpreted. In this project we are trying to resolve this problem by using digital inputs instead of handwritten and converting the digitally input prescriptions into a document file.  
+                                            </p>
+                                            <p>
+                                                Another problem of patients in medicine prescription to small scale pharmacies are the unavailability of medicines in store. The Development Team observe that there is a lack of e-commerce support in small scale pharmacies like websites or applications here in the Philippines. 
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p>No. of Online Users:<asp:Label ID="Label2" runat="server" Text="Label" ForeColor="#CC0000"></asp:Label></p>
+        </div>
+    </form>
+</body>
+</html>
